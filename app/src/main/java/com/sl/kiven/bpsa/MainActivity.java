@@ -15,13 +15,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.sl.kiven.bpsa.utils.X5WebView;
 import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient;
 import com.tencent.smtt.export.external.interfaces.JsResult;
 import com.tencent.smtt.sdk.CookieSyncManager;
-import com.tencent.smtt.sdk.DownloadListener;
 import com.tencent.smtt.sdk.WebChromeClient;
 import com.tencent.smtt.sdk.WebSettings;
 import com.tencent.smtt.sdk.WebView;
@@ -71,14 +69,15 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
         }
         setContentView(R.layout.activity_main);
-        mViewParent = (ViewGroup) findViewById(R.id.tbsContent);
+        mViewParent = (ViewGroup) findViewById(R.id.webView1);
 
-        mTestHandler.sendEmptyMessageDelayed(MSG_INIT_UI, 10);
+        //mTestHandler.sendEmptyMessageDelayed(MSG_INIT_UI, 10);
+        init();
 
     }
     private void initProgressBar() {
         mPageLoadingProgressBar = (ProgressBar) findViewById(R.id.progressBar1);// new
-        // ProgressBar(getApplicationContext(),
+        //ProgressBar(getApplicationContext(),
         // null,
         // android.R.attr.progressBarStyleHorizontal);
         mPageLoadingProgressBar.setMax(100);
@@ -106,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
                 // mTestHandler.sendEmptyMessage(MSG_OPEN_TEST_URL);
-                mTestHandler.sendEmptyMessageDelayed(MSG_OPEN_TEST_URL, 5000);// 5s?
+                mTestHandler.sendEmptyMessageDelayed(MSG_OPEN_TEST_URL, 50);// 5s?
                 /* mWebView.showLog("test Log"); */
             }
         });
