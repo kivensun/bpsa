@@ -145,6 +145,17 @@ public class MainActivity extends AppCompatActivity {
                  */
                 return super.onJsAlert(null, arg1, arg2, arg3);
             }
+
+            @Override
+            public void onProgressChanged(WebView webView, int newProgress) {
+                super.onProgressChanged(webView, newProgress);
+                if (newProgress == 100) {
+                    mPageLoadingProgressBar.setVisibility(View.GONE);
+                } else {
+                    mPageLoadingProgressBar.setVisibility(View.VISIBLE);
+                    mPageLoadingProgressBar.setProgress(newProgress);//设置加载进度
+                }
+            }
         });
 
 
@@ -201,7 +212,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                // TODO Auto-generated method stub
+
                 Process.killProcess(Process.myPid());
             }
         });

@@ -66,7 +66,7 @@ public class X5WebView extends WebView {
     protected boolean drawChild(Canvas canvas, View child, long drawingTime) {
         boolean ret = super.drawChild(canvas, child, drawingTime);
         //注释这个方法中的内容--去掉调试信息
-        /*
+/*
         canvas.save();
         Paint paint = new Paint();
         paint.setColor(0x7fff0000);

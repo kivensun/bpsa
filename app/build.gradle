@@ -20,6 +20,18 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    //android studio默认so文件加载目录为:src/main/jniLibs
+    //如在module的build.gradle按照如下方式,自定义了so文件加载目录请确保对应目录下只有armeabi目录
+        sourceSets {
+            main{
+               jniLibs.srcDirs = ['libs']
+           }
+       }
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "falcon-release.apk"
+        }
+    }
 }
 
 dependencies {
